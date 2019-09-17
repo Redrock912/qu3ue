@@ -5,9 +5,15 @@ using UnityEngine;
 public class CharacterCluster : MonoBehaviour
 {
 
-    public Characters[] characterLists;
+    public List<Characters> characterLists;
 
     public List<Vector2> memoryMap;
+
+    public Battle battleSimulator;
+
+
+    public Characters selectedCharacter;
+
 
     DungeonInfo dungeonInfo;
 
@@ -15,6 +21,8 @@ public class CharacterCluster : MonoBehaviour
 
 
     public int currentMapLocation=0;
+
+    public bool IsMoving { get => isMoving; set => isMoving = value; }
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +40,7 @@ public class CharacterCluster : MonoBehaviour
 
     void Move()
     {
-        if (isMoving)
+        if (IsMoving)
         {
 
 
@@ -47,27 +55,34 @@ public class CharacterCluster : MonoBehaviour
 
             if (currentRoom.containerStats.isBattle || currentRoom.containerStats.isBoss)
             {
-                isMoving = false;
-                
+                IsMoving = false;
+                Instantiate(battleSimulator, transform.position, Quaternion.identity);
             }
 
 
-            for (int i = 0; i < characterLists.Length; i++)
+            for (int i = 0; i < characterLists.Count; i++)
             {
-                characterLists[i].setCurrentState(isMoving);
+                characterLists[i].setCurrentState(IsMoving);
             }
         }
     }
 
-    void Battle()
-    {
 
-    }
-
-
-    void Item()
-    {
-
-    }
     
+
+    public void ChangePosition(Characters targetCharacter)
+    {
+        int selectedCharacterIndex = characterLists.IndexOf(selectedCharacter);
+        int targetCharacterIndex = characterLists.IndexOf(targetCharacter);
+
+        Vector3 selectedCharacterPosition = selectedCharacter.transform.position;
+        Vector3 targetCharacterPosition = targetCharacter.transform.position;
+
+        // swap in list and position
+        Characters temp = targetCharacter;
+        characterLists[targetCharacterIndex] = selectedCharacter;
+        characterLists[selectedCharacterIndex] = temp;
+        selectedCharacter.transform.position = targetCharacterPosition;
+        targetCharacter.transform.position = selectedCharacterPosition;
+    }
 }

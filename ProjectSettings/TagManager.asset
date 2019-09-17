@@ -7,6 +7,8 @@ TagManager:
   - SpawnPoint
   - Rooms
   - Info
+  - CharacterCluster
+  - Enemy
   layers:
   - Default
   - TransparentFX
