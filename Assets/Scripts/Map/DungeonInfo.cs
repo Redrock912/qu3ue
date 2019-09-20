@@ -39,7 +39,7 @@ public class DungeonInfo : MonoBehaviour
         //}   
 
         dungeonRooms[2].containerStats.isBattle = true;
-
+        dungeonRooms[3].containerStats.isItem = true;
         dungeonRooms[length].containerStats.isBoss = true;
         
     }

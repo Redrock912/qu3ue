@@ -1,0 +1,14 @@
+{
+    "buffList": [
+        {
+            "buffIndex": 1,
+            "name": "Heal all",
+            "description": "Heals all allies"
+        },
+        {
+            "buffIndex": 2,
+            "name": "Attack Up!",
+            "description": "Increases all allies attack by 2"
+        }
+    ]
+}

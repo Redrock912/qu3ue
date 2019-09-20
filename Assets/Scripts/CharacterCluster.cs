@@ -10,7 +10,7 @@ public class CharacterCluster : MonoBehaviour
     public List<Vector2> memoryMap;
 
     public Battle battleSimulator;
-
+    public Buff buffSimulator;
 
     public Characters selectedCharacter;
 
@@ -57,6 +57,12 @@ public class CharacterCluster : MonoBehaviour
             {
                 IsMoving = false;
                 Instantiate(battleSimulator, transform.position, Quaternion.identity);
+            }
+
+            if (currentRoom.containerStats.isItem)
+            {
+                isMoving = false;
+                Instantiate(buffSimulator, transform.position, Quaternion.identity);
             }
 
 

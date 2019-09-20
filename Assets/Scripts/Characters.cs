@@ -14,7 +14,7 @@ public class Characters : MonoBehaviour
     public bool isMoving = false;
 
     public float maxHealth = 10;
-    private float currentHealth;
+    public float currentHealth;
     public float attack = 1;
 
 
@@ -93,4 +93,6 @@ public class Characters : MonoBehaviour
             characterCluster.selectedCharacter = null;
         }
     }
+
+    
 }
