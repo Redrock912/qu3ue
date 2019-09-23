@@ -10,6 +10,7 @@ public class DungeonRoom : MonoBehaviour
     public ContainerStats containerStats;
     public Vector2 dungeonCoordinate;
 
+    public int enemyType;
 
     [System.Serializable]
     public class DirectionStats

@@ -12,22 +12,25 @@ public class Battle : MonoBehaviour
 
     private Characters battleCharacter;
 
-    void Start()
+
+    public void GetBasicData(int enemyIndex)
     {
         characterCluster = GameObject.FindGameObjectWithTag("CharacterCluster").GetComponent<CharacterCluster>();
         battleCharacter = characterCluster.characterLists[0];
 
         enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Enemy>();
 
-        enemy.setToBattlePosition();
+        enemy.setToBattlePosition(enemyIndex);
 
         InvokeRepeating("Duel", 0.5f, 1.0f);
+
     }
+    
 
 
     void Duel()
     {
-        if (battleCharacter && enemy.isAlive)
+        if (battleCharacter.currentHealth>0 && enemy.isAlive)
         {
             battleCharacter.TakeDamage(enemy.attack);
             enemy.TakeDamage(battleCharacter.attack);
@@ -40,11 +43,13 @@ public class Battle : MonoBehaviour
             Destroy(gameObject);
 
         }
-        else if (!battleCharacter)
+        else 
         {
             if (characterCluster.characterLists.Count > 0)
             {
                 battleCharacter = characterCluster.characterLists[0];
+                battleCharacter.TakeDamage(enemy.attack);
+                enemy.TakeDamage(battleCharacter.attack);
             }
             else
             {

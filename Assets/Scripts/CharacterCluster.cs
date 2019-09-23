@@ -56,7 +56,8 @@ public class CharacterCluster : MonoBehaviour
             if (currentRoom.containerStats.isBattle || currentRoom.containerStats.isBoss)
             {
                 IsMoving = false;
-                Instantiate(battleSimulator, transform.position, Quaternion.identity);
+                Battle battle = Instantiate(battleSimulator, transform.position, Quaternion.identity);
+                battle.GetBasicData(currentRoom.enemyType);
             }
 
             if (currentRoom.containerStats.isItem)

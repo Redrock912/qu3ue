@@ -26,14 +26,7 @@ public class Enemy : MonoBehaviour
 
 
         dataLength = enemyData.Count;
-
-        
-        //JsonData.SaveEnemyDataToJson(enemyDataList);
-        //enemyDataList = JsonData.LoadEnemyDataFromJson("enemyData");
-
-        //enemyImage = enemyDataList.enemyList[0].enemySprite;
-
-
+        SetupData(Random.Range(0, dataLength));
     }
 
     public void SetupData(int i)
@@ -42,6 +35,7 @@ public class Enemy : MonoBehaviour
         attack = enemyData[i].attack;
         maxHealth = enemyData[i].hp;
         currentHealth = maxHealth;
+        healthBar.fillAmount = currentHealth / maxHealth;
         gameObject.GetComponent<SpriteRenderer>().sprite = enemyImage;
 
     }
@@ -74,11 +68,12 @@ public class Enemy : MonoBehaviour
     {
         isAlive = false;
         transform.position = new Vector3(10, 30, 0);
+        
     }
 
-    public void setToBattlePosition()
+    public void setToBattlePosition(int monsterIndex)
     {
-        SetupData(Random.Range(0, dataLength));
+        SetupData(monsterIndex);
         isAlive = true;
         transform.position = new Vector3(10, 0, 0);
     }

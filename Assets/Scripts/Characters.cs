@@ -71,6 +71,7 @@ public class Characters : MonoBehaviour
     void Die()
     {
         characterCluster.characterLists.Remove(this);
+        Destroy(gameObject);
         print(characterCluster.characterLists.Count);
     }
 

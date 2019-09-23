@@ -120,36 +120,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &3065921
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3065922}
-  m_Layer: 0
-  m_Name: TestingObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3065922
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3065921}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7154403, y: 10.70595, z: -3.875}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &319003219
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,6 +389,11 @@ PrefabInstance:
       propertyPath: dungeonCoordinate.x
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6061416285162149620, guid: 4548251884c0cd348969c43be9331035,
+        type: 3}
+      propertyPath: monsterType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7203451476625197632, guid: 4548251884c0cd348969c43be9331035,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -492,6 +467,11 @@ PrefabInstance:
         type: 3}
       propertyPath: dungeonCoordinate.x
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1290363015617021551, guid: 501ac8330fab8e84f84c2a1233d2e2ac,
+        type: 3}
+      propertyPath: monsterType
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3729059293170888424, guid: 501ac8330fab8e84f84c2a1233d2e2ac,
         type: 3}
@@ -1028,6 +1008,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5397433946778999091, guid: 4eb5b4a73a1dc0344b8375d268adf072,
         type: 3}
+      propertyPath: enemyData.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5397433946778999091, guid: 4eb5b4a73a1dc0344b8375d268adf072,
+        type: 3}
       propertyPath: isAlive
       value: 1
       objectReference: {fileID: 0}
@@ -1062,5 +1047,22 @@ PrefabInstance:
       propertyPath: enemyImage
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5397433946778999091, guid: 4eb5b4a73a1dc0344b8375d268adf072,
+        type: 3}
+      propertyPath: enemyData
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5397433946778999091, guid: 4eb5b4a73a1dc0344b8375d268adf072,
+        type: 3}
+      propertyPath: enemyData.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: f8ce1ee19ab444d4d9c41fd6c584758a,
+        type: 2}
+    - target: {fileID: 5397433946778999091, guid: 4eb5b4a73a1dc0344b8375d268adf072,
+        type: 3}
+      propertyPath: enemyData.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: ef5fb8cce2e248a4dac8172b19f3d479,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4eb5b4a73a1dc0344b8375d268adf072, type: 3}
