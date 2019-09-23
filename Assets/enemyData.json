@@ -1,0 +1,13 @@
+{
+    "enemyList": [
+        {
+            "index": 1,
+            "name": "Kawaii",
+            "attack": 1.2000000476837159,
+            "hp": 3.4000000953674318,
+            "enemySprite": {
+                "instanceID": 11014
+            }
+        }
+    ]
+}

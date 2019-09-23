@@ -18,8 +18,9 @@ public class Buff : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        buffList = JsonData.LoadBuffDataFromJson();
+        
+        // 일단은 1개 맵만 생각, 나중에는 맵정보를 기반으로 데이터를 가져와야함
+        buffList = JsonData.LoadBuffDataFromJson("buffData");
 
         randomIndex = Random.Range(0, buffList.buffList.Count);
 

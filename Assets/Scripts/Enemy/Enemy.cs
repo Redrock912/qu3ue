@@ -16,14 +16,36 @@ public class Enemy : MonoBehaviour
     public Image healthBar;
 
 
+    public List<EnemyData> enemyData;
+
+    int dataLength;
+
     // Start is called before the first frame update
     void Start()
     {
+
+
+        dataLength = enemyData.Count;
+
         
+        //JsonData.SaveEnemyDataToJson(enemyDataList);
+        //enemyDataList = JsonData.LoadEnemyDataFromJson("enemyData");
+
+        //enemyImage = enemyDataList.enemyList[0].enemySprite;
+
+
+    }
+
+    public void SetupData(int i)
+    {
+        enemyImage = enemyData[i].enemySprite;
+        attack = enemyData[i].attack;
+        maxHealth = enemyData[i].hp;
+        currentHealth = maxHealth;
         gameObject.GetComponent<SpriteRenderer>().sprite = enemyImage;
 
-        currentHealth = maxHealth;
     }
+
 
     public void TakeDamage(float amount)
     {
@@ -56,6 +78,7 @@ public class Enemy : MonoBehaviour
 
     public void setToBattlePosition()
     {
+        SetupData(Random.Range(0, dataLength));
         isAlive = true;
         transform.position = new Vector3(10, 0, 0);
     }
