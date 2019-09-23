@@ -10,6 +10,8 @@ public class DungeonInfo : MonoBehaviour
     public GameObject currentPlace;
 
 
+   
+
     public CharacterCluster characterCluster;
     // Start is called before the first frame update
 

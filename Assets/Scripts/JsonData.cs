@@ -6,9 +6,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class JsonData
 {
-
-
-    
     public static void SaveBuffDataToJson(BuffDataList buffList)
     {
 
@@ -21,26 +18,18 @@ public static class JsonData
         string path = Path.Combine(Application.dataPath ,"buffData.json");
         File.WriteAllText(path, jsonData);
 
-
-        //FileStream stream = new FileStream(path, FileMode.Create);
-
-        //BuffData newData = new BuffData();
-
     }
-
-    public static BuffDataList LoadBuffDataFromJson()
+    public static BuffDataList LoadBuffDataFromJson(string jsonPath)
     {
 
         BinaryFormatter foramtter = new BinaryFormatter();
 
-
-        
-
         // 현재는 클라이언트
-        string path = Path.Combine(Application.dataPath, "buffData.json");
+        string path = Path.Combine(Application.dataPath, jsonPath + ".json");
 
         string jsonData = File.ReadAllText(path);
         return JsonUtility.FromJson<BuffDataList>(jsonData);
         
     }
+
 }
