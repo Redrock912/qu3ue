@@ -20,7 +20,7 @@ public class Battle : MonoBehaviour
 
         enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Enemy>();
 
-        enemy.setToBattlePosition(enemyIndex);
+        enemy.setToBattlePosition();
 
         InvokeRepeating("Duel", 0.5f, 1.0f);
 

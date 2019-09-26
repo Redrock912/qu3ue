@@ -5,20 +5,26 @@ using UnityEngine;
 public class DungeonInfo : MonoBehaviour
 {
 
-    public Vector2[] sampleDungeon;
     public DungeonRoom[] dungeonRooms;
     public GameObject currentPlace;
 
 
-   
+
 
     public CharacterCluster characterCluster;
     // Start is called before the first frame update
 
-          
+
+    public int currentPosition;
+
+    public int gameoverPosition;
+
 
     void Start()
     {
+
+
+
         setUpRooms();
         setupCurrentPosition(0);
         Instantiate(characterCluster, transform.position, Quaternion.identity);
@@ -26,28 +32,53 @@ public class DungeonInfo : MonoBehaviour
 
     private void Update()
     {
-        
+
     }
 
     void setUpRooms()
     {
-        int length = sampleDungeon.Length -1;
+        dungeonRooms = new DungeonRoom[5];
 
-        // 일단 닫히는 로직은 생각하지말고 다 구체적으로
+        int currentPosition = GameState.instance.runnerData.currentPosition;
 
-        //for(int i = 0; i < sampleDungeon.Length; i++)
-        //{
+        // 한바뀌를 돌아보자
+        foreach (var room in dungeonRooms)
+        {
+            if (currentPosition % 5 == 0)
+            {
+                room.containerStats.isBoss = true;
+            }
+            else
+            {
+                int random3 = Random.Range(1, 3);
+                switch (random3)
+                {
+                    case 1:
+                        room.containerStats.isBattle = true;
+                        
+                        break;
+                    case 2:
+                        room.containerStats.isItem = true;
+                        break;
+                    case 3:
+                        break;
+                    default:
+                        break;
+                }
+            }
 
-        //}   
-
-        dungeonRooms[2].containerStats.isBattle = true;
-        dungeonRooms[3].containerStats.isItem = true;
-        dungeonRooms[length].containerStats.isBoss = true;
-        
+            currentPosition++;
+            
+        }
     }
 
     public void setupCurrentPosition(int index)
     {
-        currentPlace.transform.position = dungeonRooms[index].transform.position;
+        //currentPlace.transform.position = dungeonRooms[index].transform.position;
+    }
+
+    public void CreateDungeon()
+    {
+
     }
 }

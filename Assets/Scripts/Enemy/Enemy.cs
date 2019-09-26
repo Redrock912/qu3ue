@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     [Header("UI")]
     public Image healthBar;
 
+    public float multiplier;
 
     public List<EnemyData> enemyData;
 
@@ -26,11 +27,14 @@ public class Enemy : MonoBehaviour
 
 
         dataLength = enemyData.Count;
-        SetupData(Random.Range(0, dataLength));
+        SetupData();
     }
 
-    public void SetupData(int i)
+    public void SetupData()
     {
+
+        int i = Random.Range(0, dataLength);
+
         enemyImage = enemyData[i].enemySprite;
         attack = enemyData[i].attack;
         maxHealth = enemyData[i].hp;
@@ -71,9 +75,9 @@ public class Enemy : MonoBehaviour
         
     }
 
-    public void setToBattlePosition(int monsterIndex)
+    public void setToBattlePosition()
     {
-        SetupData(monsterIndex);
+        SetupData();
         isAlive = true;
         transform.position = new Vector3(10, 0, 0);
     }

@@ -28,8 +28,7 @@ public class CharacterCluster : MonoBehaviour
     void Start()
     {
         dungeonInfo = GameObject.FindGameObjectWithTag("Info").GetComponent<DungeonInfo>();
-        memoryMap.Add(dungeonInfo.dungeonRooms[currentMapLocation].dungeonCoordinate);
-        InvokeRepeating("Move", 0.5f, 1.0f);
+       
     }
 
     // Update is called once per frame

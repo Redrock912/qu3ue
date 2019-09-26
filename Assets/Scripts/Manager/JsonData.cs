@@ -32,4 +32,27 @@ public static class JsonData
         
     }
 
+    public static void SaveRunnerDataToJson(RunnerData runnerData)
+    {
+
+     
+
+
+        string jsonData = JsonUtility.ToJson(runnerData, true);
+
+        // 현재는 클라이언트
+        string path = Path.Combine(Application.dataPath, "RunnerData.json");
+        File.WriteAllText(path, jsonData);
+
+    }
+
+
+    public static RunnerData LoadRunnerDataFromJson()
+    {
+        // 현재는 클라이언트
+        string path = Path.Combine(Application.dataPath, "RunnerData.json");
+
+        string jsonData = File.ReadAllText(path);
+        return JsonUtility.FromJson<RunnerData>(jsonData);
+    }
 }
