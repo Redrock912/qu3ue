@@ -11,6 +11,7 @@ public class Planning : MonoBehaviour
 
 
     CharacterCluster characterCluster;
+    DungeonInfo dungeonInfo;
 
     [Header("UI")]
     public Image timerBar;
@@ -22,7 +23,12 @@ public class Planning : MonoBehaviour
         currentTime = maxTime;
 
         characterCluster = GameObject.FindGameObjectWithTag("CharacterCluster").GetComponent<CharacterCluster>();
+        dungeonInfo = GameObject.FindGameObjectWithTag("Info").GetComponent<DungeonInfo>();
 
+        if (characterCluster.currentMapLocation == 4)
+        {
+            dungeonInfo.SetUpRooms();
+        }
     }
 
     // Update is called once per frame
@@ -41,7 +47,10 @@ public class Planning : MonoBehaviour
 
     public void Confirm()
     {
-        characterCluster.IsMoving = true;
+        characterCluster.StartMoving();
+        
+
+        
         Destroy(gameObject);
     }
 }

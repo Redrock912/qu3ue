@@ -7,7 +7,7 @@ public class DungeonInfo : MonoBehaviour
 
     public DungeonRoom[] dungeonRooms;
     public GameObject currentPlace;
-
+    public Transform flagSprite;
 
 
 
@@ -16,37 +16,34 @@ public class DungeonInfo : MonoBehaviour
 
 
     public int currentPosition;
-
     public int gameoverPosition;
 
 
-    void Start()
+
+
+    public void StartJourney()
     {
-
-
-
-        setUpRooms();
-        setupCurrentPosition(0);
+        SetUpRooms();
+        
         Instantiate(characterCluster, transform.position, Quaternion.identity);
     }
 
-    private void Update()
-    {
 
-    }
-
-    void setUpRooms()
+    public void SetUpRooms()
     {
-        dungeonRooms = new DungeonRoom[5];
+        
 
         int currentPosition = GameState.instance.runnerData.currentPosition;
+
+        print(currentPosition);
 
         // 한바뀌를 돌아보자
         foreach (var room in dungeonRooms)
         {
-            if (currentPosition % 5 == 0)
+            if (currentPosition % 5 == 4)
             {
-                room.containerStats.isBoss = true;
+              
+                room.SetType(2);
             }
             else
             {
@@ -54,27 +51,26 @@ public class DungeonInfo : MonoBehaviour
                 switch (random3)
                 {
                     case 1:
-                        room.containerStats.isBattle = true;
+                        room.SetType(1);
                         
                         break;
                     case 2:
-                        room.containerStats.isItem = true;
-                        break;
-                    case 3:
+                        room.SetType(3);
+              
                         break;
                     default:
                         break;
                 }
             }
-
+            room.position = currentPosition;
             currentPosition++;
             
         }
     }
 
-    public void setupCurrentPosition(int index)
+    public void MarkPosition(int index)
     {
-        //currentPlace.transform.position = dungeonRooms[index].transform.position;
+        flagSprite.position= dungeonRooms[index].flagPosition.position;
     }
 
     public void CreateDungeon()

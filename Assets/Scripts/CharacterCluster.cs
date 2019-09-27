@@ -7,7 +7,7 @@ public class CharacterCluster : MonoBehaviour
 
     public List<Characters> characterLists;
 
-    public List<Vector2> memoryMap;
+  
 
     public Battle battleSimulator;
     public Buff buffSimulator;
@@ -20,6 +20,7 @@ public class CharacterCluster : MonoBehaviour
     private bool isMoving = true;
 
 
+    // 캐릭터는 0~4번 방을 계속해서 돌뿐, 알 필요 없다.
     public int currentMapLocation=0;
 
     public bool IsMoving { get => isMoving; set => isMoving = value; }
@@ -28,7 +29,8 @@ public class CharacterCluster : MonoBehaviour
     void Start()
     {
         dungeonInfo = GameObject.FindGameObjectWithTag("Info").GetComponent<DungeonInfo>();
-       
+        
+        Invoke("Move", 1.0f);
     }
 
     // Update is called once per frame
@@ -37,29 +39,44 @@ public class CharacterCluster : MonoBehaviour
 
     }
 
+    public void StartMoving()
+    {
+        isMoving = true;
+        currentMapLocation++;
+        for (int i = 0; i < characterLists.Count; i++)
+        {
+            characterLists[i].setCurrentState(IsMoving);
+        }
+
+        Invoke("Move", 1.0f);
+    }
+
     void Move()
     {
+        currentMapLocation = currentMapLocation % 5;
+
+
         if (IsMoving)
         {
 
 
             // 현재는 1자 진행이므로
-            currentMapLocation++;
+            
 
 
             DungeonRoom currentRoom = dungeonInfo.dungeonRooms[currentMapLocation];
-
-            dungeonInfo.setupCurrentPosition(currentMapLocation);
-            memoryMap.Add(currentRoom.dungeonCoordinate);
-
-            if (currentRoom.containerStats.isBattle || currentRoom.containerStats.isBoss)
+            GameState.instance.NextPosition();
+            dungeonInfo.MarkPosition(currentMapLocation);
+            //dungeonInfo.setupCurrentPosition(currentMapLocation);
+         
+            if (currentRoom.roomType == 1 || currentRoom.roomType ==2)
             {
                 IsMoving = false;
                 Battle battle = Instantiate(battleSimulator, transform.position, Quaternion.identity);
                 battle.GetBasicData(currentRoom.enemyType);
             }
 
-            if (currentRoom.containerStats.isItem)
+            if (currentRoom.roomType == 3)
             {
                 isMoving = false;
                 Instantiate(buffSimulator, transform.position, Quaternion.identity);

@@ -1,35 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DungeonRoom : MonoBehaviour
 {
 
 
-    public DirectionStats directionStats;
-    public ContainerStats containerStats;
-    public Vector2 dungeonCoordinate;
+    public SpriteRenderer iconContainer;
+    public List<Sprite> iconList;
+    public Transform flagPosition;
 
+    // 0 = 없음, 1= battle, 2 = boss , 3 = buff
+
+    public int roomType;
+    public int position;
     public int enemyType;
 
-    [System.Serializable]
-    public class DirectionStats
+
+
+
+    /// <summary>
+    ///  0 = 없음, 1= battle, 2 = boss , 3 = buff
+    /// </summary>
+    public void SetType(int index)
     {
-        public bool isUpOpen = false;
-        public bool isLeftOpen = false;
-        public bool isRightOpen = false;
-        public bool isDownOpen = false;
+        roomType = index;
+        iconContainer.sprite = iconList[roomType];
     }
-
-    [System.Serializable]
-    public class ContainerStats
-    {
-        public bool isItem = false;
-        public bool isBattle = false;
-        public bool isBoss = false;
-    }
-
-
 
     // Start is called before the first frame update
     void Start()
