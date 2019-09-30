@@ -8,7 +8,7 @@ public class StartUI : MonoBehaviour
 
     public Button startButton;
 
-    public CampUI campUI;
+    
 
 
 
@@ -16,8 +16,8 @@ public class StartUI : MonoBehaviour
 
     public void StartGame()
     {
-
-        campUI.ActivePosition();
+        CampUI.Instance.ActivePosition();
+        
         GameState.instance.ShowUI();
         Destroy(gameObject);
     }

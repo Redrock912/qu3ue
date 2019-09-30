@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class CampUI : MonoBehaviour
 {
+    private static CampUI _instance;
+
+    public static CampUI Instance { get { return _instance; } }
 
     public Vector2 hidePosition;
     public Vector2 activePosition;
@@ -14,6 +17,19 @@ public class CampUI : MonoBehaviour
     public Button journeyButton;
 
     public Camera uiCamera;
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+
 
     public void SetPosition(Transform uiObject, float x, float y)
     {

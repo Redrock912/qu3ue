@@ -13,9 +13,13 @@ public class Planning : MonoBehaviour
     CharacterCluster characterCluster;
     DungeonInfo dungeonInfo;
 
+    public ResultUI resultUI;
+
+
     [Header("UI")]
     public Image timerBar;
     public Button confirmButton;
+    public Button campButton;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +55,15 @@ public class Planning : MonoBehaviour
         
 
         
-        Destroy(gameObject);
+        Destroy(this.gameObject);
+    }
+
+    public void Camp()
+    {
+        Instantiate(resultUI, transform.position, Quaternion.identity);
+
+        CampUI.Instance.ActivePosition();
+
+        Destroy(this.gameObject);
     }
 }
