@@ -70,6 +70,6 @@ public class CampUI : MonoBehaviour
     public void JourneyStart()
     {
         HidePosition();
-        dungeonInfo.StartJourney();
+        DungeonInfo.Instance.StartJourney();
     }
 }

@@ -36,6 +36,8 @@ public class GameState : MonoBehaviour
         currentPositionText.text = runnerData.currentPosition.ToString();
     }
 
+    
+    
     private void Awake()
     {
         if(instance == null)

@@ -62,7 +62,18 @@ public class Planning : MonoBehaviour
     {
         Instantiate(resultUI, transform.position, Quaternion.identity);
 
+        // Save current position
+        GameState.instance.SavePosition();
+
+        // destroy character on return
+        CharacterCluster characterCluster = GameObject.FindGameObjectWithTag("CharacterCluster").GetComponent<CharacterCluster>();
+        Destroy(characterCluster.gameObject);
+
+        // setupCamp position
         CampUI.Instance.ActivePosition();
+
+
+
 
         Destroy(this.gameObject);
     }

@@ -1,6 +1,13 @@
 {
-    "currentPosition": 0,
+    "currentPosition": 3,
     "gameoverPosition": 0,
     "gold": 0,
-    "bronze": 0
+    "bronze": 0,
+    "mapInfo": [
+        0,
+        0,
+        0,
+        0,
+        0
+    ]
 }

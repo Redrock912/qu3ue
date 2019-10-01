@@ -13,4 +13,6 @@ public class RunnerData
     public int gold;
 
     public int bronze;
+
+    public int[] mapInfo = new int[5];
 }

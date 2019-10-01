@@ -10,7 +10,9 @@ public class DungeonInfo : MonoBehaviour
     public Transform flagSprite;
 
 
-
+    private static DungeonInfo _instance;
+    public static DungeonInfo Instance { get { return _instance; } }
+    
     public CharacterCluster characterCluster;
     // Start is called before the first frame update
 
@@ -18,19 +20,41 @@ public class DungeonInfo : MonoBehaviour
     public int currentPosition;
     public int gameoverPosition;
 
-
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
 
 
     public void StartJourney()
     {
-        SetUpRooms();
+
+       
         
         Instantiate(characterCluster, transform.position, Quaternion.identity);
+    }
+
+    public void SetupInitialRooms()
+    {
+        if(GameState.instance.runnerData.mapInfo[0] == 0)
+        {
+            SetUpRooms();
+        }
     }
 
 
     public void SetUpRooms()
     {
+           
+        
+    
         
 
         int currentPosition = GameState.instance.runnerData.currentPosition;
