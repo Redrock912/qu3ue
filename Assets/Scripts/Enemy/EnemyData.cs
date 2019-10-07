@@ -10,4 +10,6 @@ public class EnemyData : ScriptableObject
     public float attack;
     public float hp;
     public Sprite enemySprite;
+    public int skillType;
+    public int skillTimer;
 }

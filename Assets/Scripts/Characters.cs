@@ -56,9 +56,16 @@ public class Characters : MonoBehaviour
     }
 
 
+    public void Attack(Enemy enemy)
+    {
+        enemy.TakeDamage(attack);
+    }
+
+
     public void TakeDamage(float amount)
     {
         currentHealth -= amount;
+        FloatingText.DamagePopup(transform.position,  (int)amount, 0, false);
 
         healthBar.fillAmount = currentHealth / maxHealth;
 
@@ -72,7 +79,7 @@ public class Characters : MonoBehaviour
     {
         characterCluster.characterLists.Remove(this);
         Destroy(gameObject);
-        print(characterCluster.characterLists.Count);
+       
     }
 
 

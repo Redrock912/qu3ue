@@ -73,7 +73,7 @@ public class CharacterCluster : MonoBehaviour
             {
                 IsMoving = false;
                 Battle battle = Instantiate(battleSimulator, transform.position, Quaternion.identity);
-                battle.GetBasicData(currentRoom.enemyType);
+                battle.GetBasicData(currentRoom.roomType);
             }
 
             if (currentRoom.roomType == 3)

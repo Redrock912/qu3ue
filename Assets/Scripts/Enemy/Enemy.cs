@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
 public class Enemy : MonoBehaviour
 {
 
@@ -12,26 +13,32 @@ public class Enemy : MonoBehaviour
     private float currentHealth;
     public float attack = 1;
     public bool isAlive = true;
+    public int skillType;
+    public int skillTimer;
+    public List<EnemyData> enemyData;
     [Header("UI")]
     public Image healthBar;
 
-    public float multiplier;
 
-    public List<EnemyData> enemyData;
+
+
 
     int dataLength;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
+        
 
-
-        dataLength = enemyData.Count;
+        
         SetupData();
     }
 
-    public void SetupData()
+
+
+    public virtual void SetupData()
     {
+        dataLength = enemyData.Count;
 
         int i = Random.Range(0, dataLength);
 
@@ -41,12 +48,16 @@ public class Enemy : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.fillAmount = currentHealth / maxHealth;
         gameObject.GetComponent<SpriteRenderer>().sprite = enemyImage;
+        skillType = enemyData[i].skillType;
+        skillTimer = enemyData[i].skillTimer;
+        
 
     }
 
 
     public void TakeDamage(float amount)
     {
+       
         currentHealth -= amount;
 
         healthBar.fillAmount = currentHealth/maxHealth;
@@ -55,15 +66,21 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
+        else
+        {
+            FloatingText.DamagePopup(transform.position, (int)amount, 1, false);
+        }
     }
 
-    void Attack(Characters character)
+    public virtual void Attack(Characters character)
     {
+        character.TakeDamage(attack);
     }
 
     public void Die()
     {
-        
+        FloatingText.GoldPopup(transform.position, GameState.instance.enemyGold);
+        GameState.instance.SaveGold((int)(GameState.instance.enemyGold * GameState.instance.multiplier));
         setToIdlePosition();
 
     }

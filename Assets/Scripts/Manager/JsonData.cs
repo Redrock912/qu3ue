@@ -6,6 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class JsonData
 {
+    
     public static void SaveBuffDataToJson(BuffDataList buffList)
     {
 
@@ -55,4 +56,6 @@ public static class JsonData
         string jsonData = File.ReadAllText(path);
         return JsonUtility.FromJson<RunnerData>(jsonData);
     }
+
+    
 }

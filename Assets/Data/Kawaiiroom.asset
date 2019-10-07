@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a490e7209dd09a4d85c928f7d18cd81, type: 3}
-  m_Name: GokuSon
+  m_Name: Kawaiiroom
   m_EditorClassIdentifier: 
-  index: 2
-  name: GokuSon
-  attack: 2
-  hp: 10
-  enemySprite: {fileID: 21300000, guid: fc8645eee284eee4097421004fa2dfa8, type: 3}
+  index: 1
+  name: Kawaiiroom
+  attack: 1
+  hp: 5
+  enemySprite: {fileID: 21300000, guid: e693874a7259bc44281b30f14dc625d4, type: 3}
+  skillType: 0
+  skillTimer: 0

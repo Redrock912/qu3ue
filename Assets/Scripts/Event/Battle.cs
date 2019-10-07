@@ -7,35 +7,71 @@ public class Battle : MonoBehaviour
 
     public CharacterCluster characterCluster;
     public Enemy enemy;
+    public Boss boss;
 
+    // global for dueling
+    Enemy currentEnemy;
     public Planning planningPrefab;
 
     private Characters battleCharacter;
 
 
-    public void GetBasicData(int enemyIndex)
+    private void InitializeData()
     {
-        characterCluster = GameObject.FindGameObjectWithTag("CharacterCluster").GetComponent<CharacterCluster>();
+        if (characterCluster == null)
+        {
+            characterCluster = GameObject.FindGameObjectWithTag("CharacterCluster").GetComponent<CharacterCluster>();
+        }
+
+        if (enemy == null)
+        {
+            enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Enemy>();
+        }
+
+        if (boss == null)
+        {
+            boss = GameObject.FindGameObjectWithTag("Boss").GetComponent<Boss>();
+        }
+
+    }
+
+    public void GetBasicData(int roomType)
+    {
+
+        InitializeData();
         battleCharacter = characterCluster.characterLists[0];
 
-        enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Enemy>();
+        if (roomType == 1)
+        {
+            currentEnemy = enemy;
+            enemy.setToBattlePosition();
+        }
+        else if(roomType == 2)
+        {
+            currentEnemy = boss;
+            boss.setToBattlePosition();
+        }
 
-        enemy.setToBattlePosition();
 
-        InvokeRepeating("Duel", 0.5f, 1.0f);
 
+        InvokeRepeating("Duel", 1.0f, 0.5f);
     }
     
 
 
     void Duel()
     {
-        if (battleCharacter.currentHealth>0 && enemy.isAlive)
+        
+        if (battleCharacter.currentHealth>0 && currentEnemy.isAlive)
         {
-            battleCharacter.TakeDamage(enemy.attack);
-            enemy.TakeDamage(battleCharacter.attack);
+            battleCharacter.Attack(currentEnemy);
+            currentEnemy.Attack(battleCharacter);
+            
+
+            //battleCharacter.TakeDamage(currentEnemy.attack);
+            //currentEnemy.TakeDamage(battleCharacter.attack);
         }
-        else if (!enemy.isAlive)
+        else if (!currentEnemy.isAlive)
         {
 
             // Plannig phase
@@ -48,8 +84,12 @@ public class Battle : MonoBehaviour
             if (characterCluster.characterLists.Count > 0)
             {
                 battleCharacter = characterCluster.characterLists[0];
-                battleCharacter.TakeDamage(enemy.attack);
-                enemy.TakeDamage(battleCharacter.attack);
+
+                battleCharacter.Attack(currentEnemy);
+                currentEnemy.Attack(battleCharacter);
+
+                //battleCharacter.TakeDamage(currentEnemy.attack);
+                //currentEnemy.TakeDamage(battleCharacter.attack);
             }
             else
             {

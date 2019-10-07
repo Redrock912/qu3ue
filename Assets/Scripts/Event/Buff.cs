@@ -73,7 +73,7 @@ public class Buff : MonoBehaviour
         foreach (var i in characterCluster.characterLists)
         {
             i.currentHealth = i.maxHealth;
-            i.TakeDamage(0);
+            
         }
     }
 
@@ -82,7 +82,7 @@ public class Buff : MonoBehaviour
         foreach (var i in characterCluster.characterLists)
         {
             i.currentHealth = i.maxHealth;
-            i.TakeDamage(0);
+            
         }
     }
 

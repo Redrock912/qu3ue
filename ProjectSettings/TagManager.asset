@@ -9,6 +9,7 @@ TagManager:
   - Info
   - CharacterCluster
   - Enemy
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -45,4 +46,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: TextLayer
+    uniqueID: 1028463217
     locked: 0

@@ -17,9 +17,16 @@ public class GameState : MonoBehaviour
     public Text gameoverPositionText;
     public Canvas gameStateCanvas;
 
+    public int enemyGold = 50;
+    public int bossGold = 150;
+
+    public float multiplier = 1.0f;
+
     public void SavePosition()
     {
         JsonData.SaveRunnerDataToJson(runnerData);
+
+
     }
 
     // 시작화면에선 보여주지 말자
@@ -34,6 +41,11 @@ public class GameState : MonoBehaviour
         runnerData.currentPosition++;
 
         currentPositionText.text = runnerData.currentPosition.ToString();
+    }
+
+    public void SaveGold(int amount) {
+
+        runnerData.gold += amount;
     }
 
     
@@ -58,9 +70,5 @@ public class GameState : MonoBehaviour
         gameoverPositionText.text = runnerData.gameoverPosition.ToString();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
