@@ -77,7 +77,7 @@ public class Enemy : MonoBehaviour
         character.TakeDamage(attack);
     }
 
-    public void Die()
+    public virtual void Die()
     {
         FloatingText.GoldPopup(transform.position, GameState.instance.enemyGold);
         GameState.instance.SaveGold((int)(GameState.instance.enemyGold * GameState.instance.multiplier));

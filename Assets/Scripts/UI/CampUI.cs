@@ -55,11 +55,6 @@ public class CampUI : MonoBehaviour
         
     }
 
-    private void Start()
-    {
-       
-    }
-
     public void HidePosition()
     {
         SetPosition(journeyButton.transform, 2.0f, 2.0f);

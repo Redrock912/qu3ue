@@ -30,6 +30,14 @@ public class Boss : Enemy
         
     }
 
+    public override void Die()
+    {
+        FloatingText.GoldPopup(transform.position, GameState.instance.bossGold);
+        GameState.instance.SaveGold((int)(GameState.instance.bossGold * GameState.instance.multiplier));
+        setToIdlePosition();
+       
+    }
+
 
     public void Skill(int type, Characters character)
     {

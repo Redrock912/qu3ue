@@ -30,17 +30,20 @@ public class CharacterCluster : MonoBehaviour
     {
         dungeonInfo = GameObject.FindGameObjectWithTag("Info").GetComponent<DungeonInfo>();
         
+        
+    }
+
+    public void JourneyStart()
+    {
+        transform.position = Vector3.zero;
         Invoke("Move", 1.0f);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
 
     public void StartMoving()
     {
+        
         isMoving = true;
         currentMapLocation++;
         for (int i = 0; i < characterLists.Count; i++)
@@ -107,5 +110,10 @@ public class CharacterCluster : MonoBehaviour
         characterLists[selectedCharacterIndex] = temp;
         selectedCharacter.transform.position = targetCharacterPosition;
         targetCharacter.transform.position = selectedCharacterPosition;
+    }
+
+    public void Disappear()
+    {
+        transform.position = new Vector3(0, 30, 0);
     }
 }

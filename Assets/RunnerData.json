@@ -1,7 +1,7 @@
 {
-    "currentPosition": 2,
-    "gameoverPosition": 0,
-    "gold": 50,
+    "currentPosition": 15,
+    "wDPosition": 20,
+    "gold": 850,
     "bronze": 0,
     "mapInfo": [
         0,

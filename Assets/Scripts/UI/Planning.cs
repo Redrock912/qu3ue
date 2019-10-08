@@ -62,12 +62,18 @@ public class Planning : MonoBehaviour
     {
         Instantiate(resultUI, transform.position, Quaternion.identity);
 
+        
+        // destroy character on return
+        CharacterCluster characterCluster = GameObject.FindGameObjectWithTag("CharacterCluster").GetComponent<CharacterCluster>();
+        characterCluster.Disappear();
+
+        int result = WorldDestroyer.CalculateResult(characterCluster.characterLists.Count, 1.0f, 1.0f);
+        GameState.instance.UpdateWDPosition(result);
+
+
         // Save current position
         GameState.instance.SavePosition();
 
-        // destroy character on return
-        CharacterCluster characterCluster = GameObject.FindGameObjectWithTag("CharacterCluster").GetComponent<CharacterCluster>();
-        Destroy(characterCluster.gameObject);
 
         // setupCamp position
         CampUI.Instance.ActivePosition();

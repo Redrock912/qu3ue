@@ -8,7 +8,7 @@ public class RunnerData
 {
 
     public int currentPosition;
-    public int gameoverPosition;
+    public int wDPosition;
 
     public int gold;
 

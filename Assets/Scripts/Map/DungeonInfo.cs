@@ -36,9 +36,9 @@ public class DungeonInfo : MonoBehaviour
     public void StartJourney()
     {
 
+
+        characterCluster.JourneyStart();
        
-        
-        Instantiate(characterCluster, transform.position, Quaternion.identity);
     }
 
     public void SetupInitialRooms()

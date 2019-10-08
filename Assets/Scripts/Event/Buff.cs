@@ -57,6 +57,7 @@ public class Buff : MonoBehaviour
                 Debug.Log("Out of index");
                 break;
         }
+        Destroy(gameObject);
     }
 
 
@@ -73,17 +74,18 @@ public class Buff : MonoBehaviour
         foreach (var i in characterCluster.characterLists)
         {
             i.currentHealth = i.maxHealth;
-            
+            i.healthBar.fillAmount = i.currentHealth / i.maxHealth;   
         }
+
+        
     }
 
     void AttackUp()
     {
-        foreach (var i in characterCluster.characterLists)
-        {
-            i.currentHealth = i.maxHealth;
-            
-        }
+
+
+        characterCluster.characterLists[0].attack += 1;
+        
     }
 
 }

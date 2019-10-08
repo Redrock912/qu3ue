@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+
+// For Data saving
 public class GameState : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -14,7 +17,7 @@ public class GameState : MonoBehaviour
     public RunnerData runnerData;
 
     public Text currentPositionText;
-    public Text gameoverPositionText;
+    public Text wDPositionText;
     public Canvas gameStateCanvas;
 
     public int enemyGold = 50;
@@ -22,12 +25,15 @@ public class GameState : MonoBehaviour
 
     public float multiplier = 1.0f;
 
+    public CharacterCluster characterCluster;
+
     public void SavePosition()
     {
         JsonData.SaveRunnerDataToJson(runnerData);
 
 
     }
+
 
     // 시작화면에선 보여주지 말자
     public void ShowUI()
@@ -43,9 +49,18 @@ public class GameState : MonoBehaviour
         currentPositionText.text = runnerData.currentPosition.ToString();
     }
 
+    public void UpdateWDPosition(int amount)
+    {
+        runnerData.wDPosition += amount;
+
+        wDPositionText.text = runnerData.wDPosition.ToString();
+    }
+
     public void SaveGold(int amount) {
 
         runnerData.gold += amount;
+
+
     }
 
     
@@ -67,7 +82,7 @@ public class GameState : MonoBehaviour
         runnerData = JsonData.LoadRunnerDataFromJson();
 
         currentPositionText.text = runnerData.currentPosition.ToString();
-        gameoverPositionText.text = runnerData.gameoverPosition.ToString();
+        wDPositionText.text = runnerData.wDPosition.ToString();
     }
 
 
