@@ -54,6 +54,8 @@ public class CharacterCluster : MonoBehaviour
         Invoke("Move", 1.0f);
     }
 
+    
+
     void Move()
     {
         currentMapLocation = currentMapLocation % 5;

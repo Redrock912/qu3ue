@@ -24,6 +24,15 @@ public class FloatingText : MonoBehaviour
         return damagePopup;
     }
 
+    public static FloatingText TextPopup(Vector3 position, string text)
+    {
+        Transform FloatingTextTransform = Instantiate(GameAssets.instance.floatingDamagePrefab, position + new Vector3(0, 2), Quaternion.identity);
+        FloatingText textPopup = FloatingTextTransform.GetComponent<FloatingText>();
+        textPopup.SetupText(text);
+        return textPopup;
+    }
+
+
     public static FloatingText GoldPopup(Vector3 position, int goldAmount)
     {
 
@@ -39,6 +48,13 @@ public class FloatingText : MonoBehaviour
     {
 
         textMesh = transform.GetComponent<TextMeshPro>();
+    }
+
+    public void SetupText(string text)
+    {
+        textMesh.SetText(text);
+
+
     }
 
     public void Setup(int damageAmount, int type, bool isCritical)

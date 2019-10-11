@@ -23,15 +23,62 @@ public class GameState : MonoBehaviour
     public int enemyGold = 50;
     public int bossGold = 150;
 
+    // 포션은 스테이트가 들고 있어야 하는가..?
+    public int potions = 0;
+    public int potionPrice = 50;
+    
+
     public float multiplier = 1.0f;
 
     public CharacterCluster characterCluster;
 
+    public delegate void PotionHandler();
+    public event PotionHandler OnSave;
+   
     public void SavePosition()
     {
         JsonData.SaveRunnerDataToJson(runnerData);
 
 
+    }
+
+    public void AddPotions(bool isBuying, int price = 0)
+    {
+
+        if (isBuying)
+        {
+
+            if (runnerData.gold > price)
+            {
+                runnerData.gold -= price;
+                potions += 1;
+            }
+        }
+        
+        if(OnSave != null)
+        {
+            OnSave();
+        }
+    }
+
+
+
+    public bool UsePotions()
+    {
+
+        bool havePotion;
+        if(potions > 0)
+        {
+            potions--;
+            havePotion = true;
+        }
+        else
+        {
+            havePotion = false;
+        }
+
+        return havePotion;
+        
     }
 
 
@@ -57,10 +104,7 @@ public class GameState : MonoBehaviour
     }
 
     public void SaveGold(int amount) {
-
         runnerData.gold += amount;
-
-
     }
 
     

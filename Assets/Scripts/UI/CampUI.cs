@@ -18,6 +18,8 @@ public class CampUI : MonoBehaviour
 
     public Camera uiCamera;
 
+    
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -65,6 +67,7 @@ public class CampUI : MonoBehaviour
     public void JourneyStart()
     {
         HidePosition();
-        DungeonInfo.Instance.StartJourney();
+        //DungeonInfo.Instance.StartJourney();
+        Instantiate(GameAssets.instance.journetPlanPrefab, transform.position, Quaternion.identity);
     }
 }
