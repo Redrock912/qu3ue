@@ -101,6 +101,12 @@ public class GameState : MonoBehaviour
         runnerData.wDPosition += amount;
 
         wDPositionText.text = runnerData.wDPosition.ToString();
+
+        if(runnerData.wDPosition >= runnerData.currentPosition)
+        {
+            Instantiate(GameAssets.instance.GameOverPrefab, transform.position, Quaternion.identity);
+            
+        }
     }
 
     public void SaveGold(int amount) {

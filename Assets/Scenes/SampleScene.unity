@@ -2016,6 +2016,8 @@ MonoBehaviour:
     type: 3}
   journetPlanPrefab: {fileID: 7783109653398193517, guid: 2edf73e95b2c4d44b9ea74268dc24a39,
     type: 3}
+  GameOverPrefab: {fileID: 8331670816738425869, guid: b27bd12eca4c6ca4eae5417006a5b6ac,
+    type: 3}
 --- !u!1001 &1500543151
 PrefabInstance:
   m_ObjectHideFlags: 0

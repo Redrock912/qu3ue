@@ -15,4 +15,15 @@ public class RunnerData
     public int bronze;
 
     public int[] mapInfo = new int[5];
+
+    public RunnerData(int cp, int wdp, int gd)
+    {
+        currentPosition = cp;
+        wDPosition = wdp;
+        gold = gd;
+        bronze = 0;
+
+        mapInfo = new int[] { 0, 0, 0, 0, 0 };
+    }
+    
 }

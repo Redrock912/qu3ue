@@ -10,7 +10,7 @@ public static class WorldDestroyer
     //{
     //    destroyerMultiplier *= factor;
     //}
-
+   
 
     public static int CalculateResult(int characters, float multiplierFactor , float characterMultiplier)
     {

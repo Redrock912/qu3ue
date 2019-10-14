@@ -10,7 +10,7 @@ public class GameAssets : MonoBehaviour
     public Transform floatingDamagePrefab;
     public Transform floatingGoldPrefab;
     public Transform journetPlanPrefab;
-   
+    public Transform GameOverPrefab;
 
     private void Awake()
     {
